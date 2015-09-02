@@ -17,11 +17,11 @@
         http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <mvc:annotation-driven />
-    <tx:annotation-driven />
-    <context:annotation-config />
-    <context:component-scan base-package="com.pathfinder.web.controller" />
-
+	<mvc:annotation-driven />
+	<tx:annotation-driven />
+	<context:annotation-config />
+ 	<context:component-scan base-package="com.pathfinder"/> 
+    
     <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
         <!-- another filter caches -->
         <property name="disableCaching" value="false" />
@@ -34,15 +34,17 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
-    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
 
     <mvc:interceptors>
         <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
             <property name="cacheSeconds" value="0" />
+            <!-- deprecated options
             <property name="useExpiresHeader" value="true" />
             <property name="useCacheControlHeader" value="true" />
             <property name="useCacheControlNoStore" value="true" />
+            -->
         </bean>
     </mvc:interceptors>
 </beans>
