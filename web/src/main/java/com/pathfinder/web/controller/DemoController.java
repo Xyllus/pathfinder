@@ -26,7 +26,7 @@ public class DemoController {
         Hello hello = new Hello();
         hello.setMessage("HELLO WORLD");
         
-        logger.info("sql result: " + sampleService.getData());
+//        logger.info("sql result: " + sampleService.getData());
         
         return hello;
     }
